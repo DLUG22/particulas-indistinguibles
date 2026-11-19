@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sección · Partículas indistinguibles</title>
+  <meta name="description" content="Teoría, simulaciones y paso a paso sobre sistemas de partículas idénticas (Cohen-Tannoudji, cap. XIV). Física Atómica y Nuclear, Universidad del Tolima.">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f12" media="(prefers-color-scheme: dark)">
+
+  <script>
+    (function () {
+      var r = document.documentElement;
+      try { var t = localStorage.getItem('pi-tema'); if (t === 'light' || t === 'dark') r.setAttribute('data-theme', t); } catch (e) {}
+      r.classList.add('js');
+      setTimeout(function () { if (!window.__movimiento) r.classList.remove('js'); }, 2500);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400..700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
+        integrity="sha256-DIEmZFu5g6eIsWexuXq+JQWpYq1F4EkAFGPEYBIBKps=" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/sitio.css">
+  <link rel="stylesheet" href="css/seccion.css">
+  <link rel="stylesheet" href="css/simulacion.css">
+  <link rel="stylesheet" href="css/movimiento.css">
+  <link rel="stylesheet" href="css/impresion.css" media="print">
+</head>
+<body class="pagina-seccion">
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+  <div class="progreso" aria-hidden="true"><span></span></div>
+
+  <!-- ===================================================== Barra superior -->
+  <header class="barra">
+    <a class="marca" href="index.html" aria-label="Volver a la portada">
+      <span class="marca-escudo" aria-hidden="true">UT</span>
+      <span class="marca-texto">
+        <strong>Universidad del Tolima</strong>
+        <small>Partículas indistinguibles</small>
+      </span>
+    </a>
+    <nav class="barra-nav" aria-label="Navegación general">
+      <a href="index.html">Portada</a>
+      <a href="index.html#mapa">Mapa del módulo</a>
+    </nav>
+    <div class="barra-acciones">
+      <button class="boton-icono" id="btn-imprimir" type="button" aria-label="Imprimir esta sección" title="Imprimir">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>
+      </button>
+      <button class="boton-icono" id="btn-tema" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="seccion-disposicion">
+    <!-- ===================================================== Índice lateral -->
+    <aside class="seccion-lateral" id="lateral" aria-label="Índices" data-lenis-prevent>
+      <nav aria-labelledby="titulo-modulo">
+        <p class="lateral-titulo" id="titulo-modulo">Módulo · Cohen cap. XIV</p>
+        <ol class="lista-secciones" id="lista-secciones"></ol>
+      </nav>
+      <nav aria-labelledby="titulo-toc">
+        <p class="lateral-titulo" id="titulo-toc">En esta sección</p>
+        <ol class="toc" id="toc"></ol>
+      </nav>
+    </aside>
+    <div class="velo-lateral" id="velo-lateral" aria-hidden="true"></div>
+
+    <!-- ===================================================== Contenido -->
+    <main id="principal" class="seccion-principal" tabindex="-1">
+      <header class="seccion-cab">
+        <p class="ceja" id="seccion-ceja" data-reveal>Sección</p>
+        <h1 id="seccion-titulo">Cargando…</h1>
+        <p class="seccion-resumen" id="seccion-resumen" data-reveal style="--i: 3"></p>
+        <div class="seccion-meta" id="seccion-meta" data-reveal style="--i: 4"></div>
+      </header>
+
+      <article id="articulo" class="prosa" aria-busy="true">
+        <p class="sim-cargando">Cargando el contenido…</p>
+        <noscript><p>Esta página necesita JavaScript para mostrar el contenido y las simulaciones.</p></noscript>
+      </article>
+
+      <nav class="seccion-pie" id="seccion-pie" aria-label="Secciones anterior y siguiente"></nav>
+    </main>
+  </div>
+
+  <button class="boton-lateral" id="btn-lateral" type="button" aria-controls="lateral" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Contenido
+  </button>
+
+  <!-- ===================================================== Pie -->
+  <footer class="pie">
+    <div class="contenedor pie-grid">
+      <div>
+        <p class="pie-marca">Partículas <em>indistinguibles</em></p>
+        <p class="pie-texto">Material educativo desarrollado por estudiantes de Física de la Universidad del Tolima para la asignatura Física Atómica y Nuclear, 2026.</p>
+        <p class="pie-autor"><span>Autor principal</span><a href="https://orcid.org/0009-0007-6006-8380" target="_blank" rel="noopener noreferrer">David L. Urueña G.</a><small class="pie-orcid">ORCID <a href="https://orcid.org/0009-0007-6006-8380" target="_blank" rel="noopener noreferrer">0009-0007-6006-8380</a></small></p>
+      </div>
+      <div>
+        <p class="pie-titulo">Referencia principal</p>
+        <p class="pie-texto">C. Cohen-Tannoudji, B. Diu y F. Laloë, <em>Quantum Mechanics</em>, vol. II, 2.ª ed., cap. XIV.</p>
+      </div>
+      <div>
+        <p class="pie-titulo">Simulaciones</p>
+        <p class="pie-texto">Cada simulación muestra cuántas de sus pruebas numéricas pasan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bibliotecas externas: versión exacta + huella SRI (el navegador las rechaza si alguien las altera). -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
+          integrity="sha256-dtU0zxFnBnAI/KEsTpA/xEz4z9qMUnnDGNH3jNkLCG4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"
+          integrity="sha256-OMcKHnypGrQOLZ5uYBKYUacX7Rx9Ssu91Bv5UDeRz2g=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/texmath.js"
+          integrity="sha256-km4HWhdF4QGYE7hBi5AYP+6gx7N4LIXc608kbamZ7cY=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"
+          integrity="sha256-spWPFC+DLw1eVHze935vrfzha+pgmC/Iu/UDlaJDnfg=" crossorigin="anonymous"></script>
+
+  <!-- Motor de simulaciones (portado de MC I). Las simulaciones se cargan según la sección. -->
+  <script defer src="js/nucleo/constantes.js"></script>
+  <script defer src="js/nucleo/numerico.js"></script>
+  <script defer src="js/nucleo/graficos.js"></script>
+  <script defer src="js/nucleo/ui.js"></script>
+  <script defer src="js/nucleo/registro.js"></script>
+  <script defer src="js/nucleo/pruebas.js"></script>
+
+  <!-- Sitio -->
+  <script defer src="js/sitio/tema.js"></script>
+  <script defer src="js/sitio/componentes.js"></script>
+  <script defer src="js/sitio/movimiento.js"></script>
+  <script defer src="js/sitio/seccion.js"></script>
+</body>
+</html>

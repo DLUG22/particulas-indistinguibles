@@ -1,0 +1,19 @@
+# Material con derechos de autor y apuntes privados: NO se publica
+material/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Configuración local de Claude Code (cada quien la suya)
+.claude/settings.local.json

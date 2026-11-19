@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "particulas",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["herramientas/servidor.py", "8800"],
+      "port": 8800
+    }
+  ]
+}

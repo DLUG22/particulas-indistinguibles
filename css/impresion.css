@@ -1,0 +1,65 @@
+/* =============================================================================
+   impresion.css — Se carga con media="print".
+   Papel blanco, tinta negra, todo abierto, sin animaciones ni controles.
+   (La versión completa para imprimir será imprimir.html — fase 4 del PLAN.)
+   ============================================================================= */
+
+@page { margin: 16mm 14mm 18mm; }
+
+:root,
+:root[data-theme] {
+  --papel: #ffffff;
+  --papel-2: #f4f4f4;
+  --panel: #ffffff;
+  --tinta: #000000;
+  --tenue: #333333;
+  --borde: #bbbbbb;
+  --borde-fuerte: #888888;
+  --acento: #8e1526;
+  --acento-texto: #ffffff;
+  --acento-suave: #f6e9eb;
+  --oro: #7a5a18;
+  --oro-suave: #f7f1e4;
+  --boson: #1d4a8c;
+  --fermion: #8e1526;
+  --distinguible: #555555;
+  --sombra: none;
+  --sombra-alta: none;
+  color-scheme: light;
+}
+
+html, body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+
+.barra, .progreso, .saltar, .indicador-scroll, .portada-fondo,
+.portada-botones, .selector, .boton-icono, .boton-texto, .paso-pista,
+.lectura-viva .medidor { display: none !important; }
+
+/* Todo visible y quieto */
+[data-reveal], .palabra > span {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+.portada { min-height: 0; padding: 0 0 10mm; display: block; }
+.portada-grid { grid-template-columns: 1fr 0.8fr; }
+.portada-titulo { font-size: 34pt; }
+.bloque { padding: 8mm 0; background: none !important; }
+.bloque-cab { margin-bottom: 6mm; }
+.bloque-cab h2 { font-size: 22pt; }
+
+.tarjeta { box-shadow: none !important; }
+.tarjeta-func:hover { transform: none; }
+
+/* Pasos y respuestas abiertos */
+.paso-cuerpo { grid-template-rows: 1fr !important; }
+.paso-cuerpo > div { opacity: 1 !important; filter: none !important; padding-bottom: 10px !important; }
+
+/* Sin cortes feos */
+h2, h3, h4 { break-after: avoid; }
+.katex-display, figure, .nota, .paso, .tarjeta-func, .mapa-item, .pregunta { break-inside: avoid; }
+p { orphans: 3; widows: 3; }
+
+/* Enlaces externos con su dirección */
+a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }

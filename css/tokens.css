@@ -1,0 +1,141 @@
+/* =============================================================================
+   tokens.css — Sistema de diseño · Partículas indistinguibles (UT)
+   ÚNICO lugar donde se definen colores, tipografías, medidas y curvas de movimiento.
+   Modo: sin atributo se sigue prefers-color-scheme; data-theme="light|dark" en <html> lo fuerza.
+   El motor de simulaciones (Graf, portado de MC I) lee: --texto --tenue --grid --eje --acento
+   --clasico --aprox --prohibido --positivo --negativo --s1..--s6 --graf-fondo.
+   ============================================================================= */
+
+:root {
+  /* Identidad Universidad del Tolima */
+  --ut-rojo: #a51c30;
+  --ut-rojo-hondo: #7a1222;
+  --ut-oro: #a87b22;
+
+  /* Superficies y tinta */
+  --papel: #f7f5f0;
+  --papel-2: #efebe3;
+  --panel: #ffffff;
+  --tinta: #16171b;
+  --tenue: #5c5f6a;
+  --borde: rgba(22, 23, 27, 0.10);
+  --borde-fuerte: rgba(22, 23, 27, 0.18);
+  --vidrio: rgba(247, 245, 240, 0.72);
+
+  /* Acento */
+  --acento: var(--ut-rojo);
+  --acento-hondo: var(--ut-rojo-hondo);
+  --acento-suave: rgba(165, 28, 48, 0.08);
+  --acento-texto: #ffffff;
+  --oro: var(--ut-oro);
+  --oro-suave: rgba(168, 123, 34, 0.10);
+
+  /* Convención física (fija en todo el sitio) */
+  --boson: #2457a3;
+  --fermion: #a51c30;
+  --distinguible: #6b6f7a;
+
+  /* Variables que lee el motor Graf (MC I) */
+  --texto: var(--tinta);
+  --grid: rgba(22, 23, 27, 0.08);
+  --eje: #4a4d57;
+  --clasico: var(--distinguible);
+  --aprox: #b4600a;
+  --prohibido: rgba(110, 112, 125, 0.14);
+  --positivo: #2a8c7f;
+  --negativo: #c2414f;
+  --s1: var(--fermion); --s2: var(--boson); --s3: #2a8c7f; --s4: #c48a0c; --s5: #6d4bb0; --s6: #3a3d46;
+  --graf-fondo: var(--panel);
+
+  /* Tipografía */
+  --f-titulo: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --f-texto: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-hero: clamp(2.9rem, 1.6rem + 5.6vw, 6.2rem);
+  --t-h2: clamp(2rem, 1.4rem + 2.4vw, 3.3rem);
+  --t-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.55rem);
+  --t-cuerpo: 1.0625rem;
+  --t-chico: 0.875rem;
+  --interlineado: 1.7;
+  --ancho-lectura: 68ch;
+  --ancho-max: 1200px;
+
+  /* Forma */
+  --radio: 16px;
+  --radio-chico: 10px;
+  --sombra: 0 1px 2px rgba(22, 23, 27, 0.05), 0 8px 28px rgba(22, 23, 27, 0.06);
+  --sombra-alta: 0 2px 4px rgba(22, 23, 27, 0.05), 0 22px 60px rgba(22, 23, 27, 0.12);
+  --alto-barra: 64px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-suave: cubic-bezier(0.33, 1, 0.68, 1);
+  --dur: 0.9s;
+  --dur-corta: 0.35s;
+
+  color-scheme: light;
+}
+
+/* ---- Modo oscuro (siguiendo al sistema, salvo que se fuerce claro) ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ut-rojo: #ef5f6f;
+    --ut-rojo-hondo: #ff8a96;
+    --ut-oro: #d9ad55;
+    --papel: #0e0f12;
+    --papel-2: #15161a;
+    --panel: #17181c;
+    --tinta: #ecebe8;
+    --tenue: #a2a4ad;
+    --borde: rgba(255, 255, 255, 0.09);
+    --borde-fuerte: rgba(255, 255, 255, 0.17);
+    --vidrio: rgba(14, 15, 18, 0.68);
+    --acento-suave: rgba(239, 95, 111, 0.12);
+    --acento-texto: #16080a;
+    --oro-suave: rgba(217, 173, 85, 0.12);
+    --boson: #6fa4ff;
+    --fermion: #ef5f6f;
+    --distinguible: #9b9ea8;
+    --grid: rgba(255, 255, 255, 0.09);
+    --eje: #b3b5bd;
+    --aprox: #f0a050;
+    --prohibido: rgba(190, 195, 215, 0.12);
+    --positivo: #4fd1c0;
+    --negativo: #ff7b8d;
+    --s3: #4fd1c0; --s4: #ffc94d; --s5: #b99bff; --s6: #d0d3db;
+    --sombra: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 28px rgba(0, 0, 0, 0.35);
+    --sombra-alta: 0 2px 4px rgba(0, 0, 0, 0.4), 0 22px 60px rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+/* ---- Modo oscuro forzado con el botón (mismos valores) ---- */
+:root[data-theme="dark"] {
+  --ut-rojo: #ef5f6f;
+  --ut-rojo-hondo: #ff8a96;
+  --ut-oro: #d9ad55;
+  --papel: #0e0f12;
+  --papel-2: #15161a;
+  --panel: #17181c;
+  --tinta: #ecebe8;
+  --tenue: #a2a4ad;
+  --borde: rgba(255, 255, 255, 0.09);
+  --borde-fuerte: rgba(255, 255, 255, 0.17);
+  --vidrio: rgba(14, 15, 18, 0.68);
+  --acento-suave: rgba(239, 95, 111, 0.12);
+  --acento-texto: #16080a;
+  --oro-suave: rgba(217, 173, 85, 0.12);
+  --boson: #6fa4ff;
+  --fermion: #ef5f6f;
+  --distinguible: #9b9ea8;
+  --grid: rgba(255, 255, 255, 0.09);
+  --eje: #b3b5bd;
+  --aprox: #f0a050;
+  --prohibido: rgba(190, 195, 215, 0.12);
+  --positivo: #4fd1c0;
+  --negativo: #ff7b8d;
+  --s3: #4fd1c0; --s4: #ffc94d; --s5: #b99bff; --s6: #d0d3db;
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 28px rgba(0, 0, 0, 0.35);
+  --sombra-alta: 0 2px 4px rgba(0, 0, 0, 0.4), 0 22px 60px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}

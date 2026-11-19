@@ -1,0 +1,11 @@
+[
+  { "id": "01-problema", "numero": "1", "titulo": "El problema de las partículas idénticas", "cohen": "Cohen §A · pp. 1420–1425", "listo": true },
+  { "id": "02-permutaciones", "numero": "2", "titulo": "Operadores de permutación", "cohen": "Cohen §B · pp. 1425–1434", "listo": true },
+  { "id": "03-simetrizacion", "numero": "3", "titulo": "Postulado de simetrización", "cohen": "Cohen §C · pp. 1434–1443", "listo": true },
+  { "id": "04-pauli", "numero": "4", "titulo": "Bosones, fermiones y Pauli", "cohen": "Cohen §D-1 · pp. 1444–1446", "listo": true },
+  { "id": "05-intercambio", "numero": "5", "titulo": "Interferencia de intercambio", "cohen": "Cohen §D-2 · pp. 1446–1455", "listo": true },
+  { "id": "06-atomos", "numero": "6", "titulo": "Átomos de muchos electrones", "cohen": "Complemento A_XIV · pp. 1459–1466", "listo": false },
+  { "id": "07-helio", "numero": "7", "titulo": "Átomo de helio", "cohen": "Complemento B_XIV · pp. 1467–1480", "listo": false },
+  { "id": "08-gas-electrones", "numero": "8", "titulo": "Gas de electrones", "cohen": "Complemento C_XIV · pp. 1481–1495", "listo": false },
+  { "id": "ejercicios", "numero": "E", "titulo": "Ejercicios", "cohen": "Complemento D_XIV · pp. 1496–1504", "listo": false }
+]

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partículas indistinguibles · Física Atómica y Nuclear</title>
+  <meta name="description" content="Teoría, simulaciones y paso a paso de los ejercicios sobre sistemas de partículas idénticas. Física Atómica y Nuclear, Universidad del Tolima.">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f12" media="(prefers-color-scheme: dark)">
+
+  <!-- Antes de pintar: tema guardado y clase .js (activa las animaciones de entrada).
+       Si movimiento.js no llega a cargar, se quita .js a los 2,5 s para que nada quede oculto. -->
+  <script>
+    (function () {
+      var r = document.documentElement;
+      try { var t = localStorage.getItem('pi-tema'); if (t === 'light' || t === 'dark') r.setAttribute('data-theme', t); } catch (e) {}
+      r.classList.add('js');
+      setTimeout(function () { if (!window.__movimiento) r.classList.remove('js'); }, 2500);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400..700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
+        integrity="sha256-DIEmZFu5g6eIsWexuXq+JQWpYq1F4EkAFGPEYBIBKps=" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/sitio.css">
+  <link rel="stylesheet" href="css/movimiento.css">
+  <link rel="stylesheet" href="css/impresion.css" media="print">
+</head>
+<body>
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+  <div class="progreso" aria-hidden="true"><span></span></div>
+
+  <!-- ===================================================== Barra superior -->
+  <header class="barra">
+    <a class="marca" href="#inicio" aria-label="Inicio">
+      <span class="marca-escudo" aria-hidden="true">UT</span>
+      <span class="marca-texto">
+        <strong>Universidad del Tolima</strong>
+        <small>Física Atómica y Nuclear</small>
+      </span>
+    </a>
+    <nav class="barra-nav" aria-label="Secciones de la portada">
+      <a href="#recorrido">Qué encontrarás</a>
+      <a href="#mapa">Mapa del módulo</a>
+      <a href="#muestra">Vista previa</a>
+    </nav>
+    <div class="barra-acciones">
+      <button class="boton-icono" id="btn-imprimir" type="button" aria-label="Imprimir esta página" title="Imprimir">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>
+      </button>
+      <button class="boton-icono" id="btn-tema" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="principal" tabindex="-1">
+
+    <!-- ===================================================== Portada -->
+    <section class="portada" id="inicio" aria-labelledby="titulo-portada">
+      <div class="portada-fondo" aria-hidden="true" data-parallax="0.18"></div>
+
+      <div class="contenedor portada-grid">
+        <div class="portada-texto">
+          <p class="ceja" data-reveal>Física Atómica y Nuclear · Parcial</p>
+          <h1 class="portada-titulo" id="titulo-portada" data-split style="--retraso: 120ms">Partículas <em>indistinguibles</em></h1>
+          <p class="portada-lead" data-reveal style="--i: 4">
+            Dos electrones no llevan nombre. Aquí verás qué cambia en la física cuando
+            intercambiarlos no puede alterar nada que se pueda medir.
+          </p>
+          <div class="portada-formula" data-reveal style="--i: 5">
+            $$\Psi(x_2, x_1) \;=\; \pm\, \Psi(x_1, x_2)$$
+            <small><span class="t-boson">+ bosones</span> · <span class="t-fermion">− fermiones</span></small>
+          </div>
+          <div class="portada-botones" data-reveal style="--i: 6">
+            <a class="boton boton-primario" href="seccion.html?s=01-problema">Empezar por la sección 1 <span class="flecha" aria-hidden="true">→</span></a>
+            <a class="boton boton-secundario" href="#mapa">Ver el mapa del módulo</a>
+          </div>
+        </div>
+
+        <figure class="portada-figura tarjeta" data-reveal style="--i: 3">
+          <div class="selector" role="radiogroup" aria-label="Tipo de partículas" style="--k: 2">
+            <span class="pildora" aria-hidden="true"></span>
+            <button type="button" role="radio" aria-checked="false" data-modo="distinguibles" style="--c: var(--distinguible)">Distinguibles</button>
+            <button type="button" role="radio" aria-checked="false" data-modo="bosones" style="--c: var(--boson)">Bosones</button>
+            <button type="button" role="radio" aria-checked="true" data-modo="fermiones" style="--c: var(--fermion)">Fermiones</button>
+          </div>
+          <div class="lienzo-caja">
+            <canvas id="lienzo-portada" role="img" aria-label="Densidad de probabilidad conjunta de dos fermiones en un pozo infinito: la diagonal x1 igual a x2 queda vacía."></canvas>
+          </div>
+          <div class="lectura-viva" aria-live="off">
+            <span class="lectura-nombre">Probabilidad de hallarlas a menos de L/10</span>
+            <span class="lectura-valor"><strong id="lectura-cerca">—</strong><small>media <span id="lectura-media">—</span></small></span>
+            <span class="medidor" aria-hidden="true"><span id="medidor-cerca"></span></span>
+          </div>
+          <figcaption>
+            $|\Psi(x_1,x_2,t)|^2$ para dos partículas en un pozo infinito de ancho $L$, en una superposición de los niveles
+            $(1,2)$ y $(2,3)$. En fermiones la diagonal $x_1 = x_2$ queda vacía: es el principio de Pauli
+            (parte espacial antisimétrica, p. ej. dos electrones en estado triplete).
+          </figcaption>
+        </figure>
+      </div>
+
+      <a class="indicador-scroll" href="#recorrido" aria-label="Bajar a la siguiente sección"></a>
+    </section>
+
+    <!-- ===================================================== Qué encontrarás -->
+    <section class="bloque" id="recorrido" aria-labelledby="titulo-recorrido">
+      <div class="contenedor">
+        <header class="bloque-cab">
+          <p class="ceja" data-reveal>01 — Qué encontrarás</p>
+          <h2 id="titulo-recorrido" data-split>Todo el parcial en un solo lugar</h2>
+          <p class="bloque-lead" data-reveal style="--i: 2">
+            Cada tema tiene la misma estructura, para que sepas siempre dónde está cada cosa:
+            primero la idea, luego la matemática, después la física que hay detrás.
+          </p>
+        </header>
+
+        <div class="rejilla-tarjetas" data-reveal-grupo>
+          <article class="tarjeta tarjeta-func" data-reveal data-luz>
+            <span class="icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span>
+            <h3>Teoría completa</h3>
+            <p>La derivación entera, sin saltos: contexto, desarrollo, resultado e interpretación.</p>
+          </article>
+          <article class="tarjeta tarjeta-func" data-reveal data-luz>
+            <span class="icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M6 15c2.5-7 5-7 7.5 0S18 22 21 9"/></svg></span>
+            <h3>Simulaciones</h3>
+            <p>Cambia un parámetro y mira la física responder. Cada ejercicio trae la suya.</p>
+          </article>
+          <article class="tarjeta tarjeta-func" data-reveal data-luz>
+            <span class="icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="12" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/></svg></span>
+            <h3>Paso a paso</h3>
+            <p>Cada ejercicio resuelto en pasos que destapas uno a uno, con su comentario.</p>
+          </article>
+          <article class="tarjeta tarjeta-func" data-reveal data-luz>
+            <span class="icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span>
+            <h3>Entendimiento físico</h3>
+            <p>Qué significa cada resultado, errores comunes y preguntas para ponerte a prueba.</p>
+          </article>
+          <article class="tarjeta tarjeta-func" data-reveal data-luz>
+            <span class="icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg></span>
+            <h3>Para imprimir</h3>
+            <p>Una versión con todo abierto y las simulaciones como figuras con código QR.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== Mapa del módulo -->
+    <section class="bloque bloque-alterno" id="mapa" aria-labelledby="titulo-mapa">
+      <div class="contenedor">
+        <header class="bloque-cab">
+          <p class="ceja" data-reveal>02 — Mapa del módulo</p>
+          <h2 id="titulo-mapa" data-split>De la etiqueta imposible al principio de Pauli</h2>
+          <blockquote class="cita-guia" data-reveal style="--i: 2">
+            <p>¿Por qué las partículas idénticas obedecen principios estadísticos diferentes y cómo estos determinan la estructura electrónica y nuclear de la materia?</p>
+            <cite>Pregunta guía del curso · semana 11</cite>
+          </blockquote>
+          <p class="bloque-lead" data-reveal style="--i: 3">
+            Para responderla seguimos el capítulo XIV del Cohen-Tannoudji (vol. II), sección por sección.
+          </p>
+        </header>
+
+        <ol class="mapa">
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">01</span>
+            <div>
+              <span class="mapa-ref">Cohen §A · pp. 1420–1425</span>
+              <h3>El problema de las partículas idénticas</h3>
+              <p>En clásica las seguimos por su trayectoria; en cuántica los paquetes se solapan y la etiqueta se pierde. Aparece la degeneración de intercambio.</p>
+              <span class="chip" style="--c: var(--distinguible)">2 simulaciones · choque y degeneración de intercambio</span>
+              <a class="mapa-enlace" href="seccion.html?s=01-problema">Leer la sección <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">02</span>
+            <div>
+              <span class="mapa-ref">Cohen §B · pp. 1425–1434</span>
+              <h3>Operadores de permutación</h3>
+              <p>$P_{21}$, sus valores propios $\pm 1$, el simetrizador $S$ y el antisimetrizador $A$; generalización a $N$ partículas y cómo se transforman los observables.</p>
+              <span class="chip">Simulación · permutaciones de tres partículas</span>
+              <a class="mapa-enlace" href="seccion.html?s=02-permutaciones">Leer la sección <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">03</span>
+            <div>
+              <span class="mapa-ref">Cohen §C · pp. 1434–1443</span>
+              <h3>Postulado de simetrización</h3>
+              <p>Bosones y fermiones. Cómo construir los kets físicos, el determinante de Slater y qué cambia en la medida y en la evolución.</p>
+              <span class="chip" style="--c: var(--fermion)">Simulación · determinante de Slater</span>
+              <a class="mapa-enlace" href="seccion.html?s=03-simetrizacion">Leer la sección <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">04</span>
+            <div>
+              <span class="mapa-ref">Cohen §D-1 · pp. 1444–1446</span>
+              <h3>Bosones, fermiones y Pauli</h3>
+              <p>Estado fundamental de $N$ partículas independientes y estadísticas cuánticas: los bosones se apilan, los fermiones llenan niveles.</p>
+              <span class="chip" style="--c: var(--boson)">2 simulaciones · llenado de niveles y conteo de microestados</span>
+              <a class="mapa-enlace" href="seccion.html?s=04-pauli">Leer la sección <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">05</span>
+            <div>
+              <span class="mapa-ref">Cohen §D-2 · pp. 1446–1455</span>
+              <h3>Interferencia de intercambio</h3>
+              <p>El proceso directo y el de intercambio interfieren: agrupamiento de bosones, antiagrupamiento de fermiones y colisiones $|f(\theta) \pm f(\pi-\theta)|^2$. Y cuándo se puede ignorar la simetrización.</p>
+              <span class="chip" style="--c: var(--fermion)">2 simulaciones · densidad de dos partículas y colisiones</span>
+              <a class="mapa-enlace" href="seccion.html?s=05-intercambio">Leer la sección <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">06</span>
+            <div>
+              <span class="mapa-ref">Complemento A<sub>XIV</sub> · pp. 1459–1466</span>
+              <h3>Átomos de muchos electrones</h3>
+              <p>Aproximación de campo central y configuraciones electrónicas: de dónde sale la tabla periódica.</p>
+              <span class="chip">Simulación · configuraciones electrónicas</span>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">07</span>
+            <div>
+              <span class="mapa-ref">Complemento B<sub>XIV</sub> · pp. 1467–1480</span>
+              <h3>Átomo de helio</h3>
+              <p>Energía de intercambio, ortohelio y parahelio, términos espectrales y multipletes.</p>
+              <span class="chip" style="--c: var(--fermion)">Simulación · integrales directa e intercambio</span>
+            </div>
+          </li>
+          <li class="mapa-item" data-reveal>
+            <span class="mapa-num">08</span>
+            <div>
+              <span class="mapa-ref">Complemento C<sub>XIV</sub> · pp. 1481–1495</span>
+              <h3>Gas de electrones</h3>
+              <p>Energía de Fermi, por qué importan los electrones cercanos a ella y electrones en sólidos.</p>
+              <span class="chip">Simulación · gas de Fermi</span>
+            </div>
+          </li>
+          <li class="mapa-item mapa-item-destacado" data-reveal>
+            <span class="mapa-num">E</span>
+            <div>
+              <span class="mapa-ref">Complemento D<sub>XIV</sub> · pp. 1496–1504</span>
+              <h3>Ejercicios</h3>
+              <p>Los 9 ejercicios del Cohen, cada uno con enunciado, estrategia, paso a paso, verificación, simulación y entendimiento físico.</p>
+              <span class="chip" style="--c: var(--oro)">Una simulación por ejercicio</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================== Vista previa de una sección -->
+    <section class="bloque" id="muestra" aria-labelledby="titulo-muestra">
+      <div class="contenedor">
+        <header class="bloque-cab">
+          <p class="ceja" data-reveal>03 — Vista previa</p>
+          <h2 id="titulo-muestra" data-split>Así se lee una sección</h2>
+          <p class="bloque-lead" data-reveal style="--i: 2">
+            Un fragmento de la sección 2 con los componentes que tendrá cada página:
+            idea central, desarrollo, paso a paso, idea física y preguntas.
+          </p>
+        </header>
+
+        <article class="lectura-muestra tarjeta" data-reveal>
+          <p class="ceja">Sección 2 · Operadores de permutación</p>
+          <h3 class="muestra-titulo">¿Por qué sólo hay dos tipos de partículas?</h3>
+
+          <aside class="nota nota-central">
+            <strong>Idea central</strong>
+            <p>Intercambiar dos veces las mismas dos partículas es no hacer nada. De ahí sale que, frente al intercambio, un estado sólo puede quedar igual o cambiar de signo.</p>
+          </aside>
+
+          <p>Para un sistema de dos partículas, el operador de permutación $P_{21}$ intercambia los estados que ocupan:</p>
+          $$P_{21}\,|1\!:\!u;\,2\!:\!v\rangle \;=\; |1\!:\!v;\,2\!:\!u\rangle$$
+
+          <div class="pasos" data-pasos>
+            <div class="pasos-cab">
+              <h4>Paso a paso</h4>
+              <button class="boton-texto" type="button" data-destapar-todo>Destapar todo</button>
+            </div>
+            <ol>
+              <li class="paso">
+                <button class="paso-boton" type="button" aria-expanded="false">
+                  <span class="paso-num">1</span>
+                  <span class="paso-titulo">Aplicar $P_{21}$ dos veces</span>
+                  <span class="paso-pista">Clic para destapar</span>
+                </button>
+                <div class="paso-cuerpo"><div>
+                  $$P_{21}^2\,|1\!:\!u;\,2\!:\!v\rangle = P_{21}\,|1\!:\!v;\,2\!:\!u\rangle = |1\!:\!u;\,2\!:\!v\rangle \;\;\Rightarrow\;\; P_{21}^2 = \mathbb{1}$$
+                  <p class="paso-comentario">Vale para todos los kets de la base, así que vale como identidad entre operadores. Además $P_{21}$ es hermítico y unitario.</p>
+                </div></div>
+              </li>
+              <li class="paso">
+                <button class="paso-boton" type="button" aria-expanded="false">
+                  <span class="paso-num">2</span>
+                  <span class="paso-titulo">Valores propios</span>
+                  <span class="paso-pista">Clic para destapar</span>
+                </button>
+                <div class="paso-cuerpo"><div>
+                  $$P_{21}|\psi\rangle = \lambda|\psi\rangle \;\Rightarrow\; |\psi\rangle = P_{21}^2|\psi\rangle = \lambda^2|\psi\rangle \;\Rightarrow\; \lambda = \pm 1$$
+                  <p class="paso-comentario">Sólo hay dos maneras de responder al intercambio: quedar igual ($+1$, simétrico) o cambiar de signo ($-1$, antisimétrico).</p>
+                </div></div>
+              </li>
+              <li class="paso">
+                <button class="paso-boton" type="button" aria-expanded="false">
+                  <span class="paso-num">3</span>
+                  <span class="paso-titulo">Proyectores $S$ y $A$</span>
+                  <span class="paso-pista">Clic para destapar</span>
+                </button>
+                <div class="paso-cuerpo"><div>
+                  $$S = \tfrac{1}{2}\left(\mathbb{1} + P_{21}\right), \qquad A = \tfrac{1}{2}\left(\mathbb{1} - P_{21}\right), \qquad S + A = \mathbb{1}, \quad SA = 0$$
+                  <p class="paso-comentario">Todo ket de dos partículas se descompone, de forma única, en una parte simétrica más una antisimétrica.</p>
+                </div></div>
+              </li>
+            </ol>
+          </div>
+
+          <aside class="nota nota-fisica">
+            <strong>Idea física</strong>
+            <p>El postulado de simetrización dice que la naturaleza usa sólo uno de los dos subespacios: los <span class="t-boson">bosones</span> viven en el simétrico y los <span class="t-fermion">fermiones</span> en el antisimétrico. En tres dimensiones no se conoce ninguna excepción.</p>
+          </aside>
+
+          <details class="pregunta">
+            <summary><span class="pregunta-texto">Pregunta · ¿Pueden dos fermiones ocupar el mismo estado $|u\rangle$?</span></summary>
+            <div class="pregunta-cuerpo">
+              <p>No. $A\,|1\!:\!u;\,2\!:\!u\rangle = \tfrac{1}{2}\big(|1\!:\!u;\,2\!:\!u\rangle - |1\!:\!u;\,2\!:\!u\rangle\big) = 0$, y el ket nulo no representa ningún estado físico. Es el principio de exclusión de Pauli. En la portada lo ves como la diagonal vacía.</p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================== Pie -->
+  <footer class="pie">
+    <div class="contenedor pie-grid">
+      <div>
+        <p class="pie-marca">Partículas <em>indistinguibles</em></p>
+        <p class="pie-texto">Material educativo desarrollado por estudiantes de Física de la Universidad del Tolima para la asignatura Física Atómica y Nuclear, 2026.</p>
+        <p class="pie-autor"><span>Autor principal</span><a href="https://orcid.org/0009-0007-6006-8380" target="_blank" rel="noopener noreferrer">David L. Urueña G.</a><small class="pie-orcid">ORCID <a href="https://orcid.org/0009-0007-6006-8380" target="_blank" rel="noopener noreferrer">0009-0007-6006-8380</a></small></p>
+      </div>
+      <div>
+        <p class="pie-titulo">Referencia principal</p>
+        <p class="pie-texto">C. Cohen-Tannoudji, B. Diu y F. Laloë, <em>Quantum Mechanics</em>, vol. II, cap. XIV.</p>
+      </div>
+      <div>
+        <p class="pie-titulo">Proyecto</p>
+        <p class="pie-texto">Código abierto en GitHub · Créditos completos en la versión final.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bibliotecas externas: versión exacta + huella SRI (el navegador las rechaza si alguien las altera). -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
+          integrity="sha256-dtU0zxFnBnAI/KEsTpA/xEz4z9qMUnnDGNH3jNkLCG4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js"
+          integrity="sha256-u1PrlTOUUxquNv3VNwZcQkTrhUKQGjzpFGAdkyZ1uKw=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"
+          integrity="sha256-spWPFC+DLw1eVHze935vrfzha+pgmC/Iu/UDlaJDnfg=" crossorigin="anonymous"></script>
+
+  <!-- Sitio -->
+  <script defer src="js/sitio/tema.js"></script>
+  <script defer src="js/sitio/componentes.js"></script>
+  <script defer src="js/sitio/movimiento.js"></script>
+  <script defer src="js/sitio/portada.js"></script>
+</body>
+</html>
