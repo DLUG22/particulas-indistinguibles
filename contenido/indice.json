@@ -4,8 +4,16 @@
   { "id": "03-simetrizacion", "numero": "3", "titulo": "Postulado de simetrización", "cohen": "Cohen §C · pp. 1434–1443", "listo": true },
   { "id": "04-pauli", "numero": "4", "titulo": "Bosones, fermiones y Pauli", "cohen": "Cohen §D-1 · pp. 1444–1446", "listo": true },
   { "id": "05-intercambio", "numero": "5", "titulo": "Interferencia de intercambio", "cohen": "Cohen §D-2 · pp. 1446–1455", "listo": true },
-  { "id": "06-atomos", "numero": "6", "titulo": "Átomos de muchos electrones", "cohen": "Complemento A_XIV · pp. 1459–1466", "listo": false },
-  { "id": "07-helio", "numero": "7", "titulo": "Átomo de helio", "cohen": "Complemento B_XIV · pp. 1467–1480", "listo": false },
-  { "id": "08-gas-electrones", "numero": "8", "titulo": "Gas de electrones", "cohen": "Complemento C_XIV · pp. 1481–1495", "listo": false },
-  { "id": "ejercicios", "numero": "E", "titulo": "Ejercicios", "cohen": "Complemento D_XIV · pp. 1496–1504", "listo": false }
+  { "id": "06-atomos", "numero": "6", "titulo": "Átomos de muchos electrones", "cohen": "Complemento A_XIV · pp. 1459–1466", "listo": true },
+  { "id": "07-helio", "numero": "7", "titulo": "Átomo de helio", "cohen": "Complemento B_XIV · pp. 1467–1480", "listo": true },
+  { "id": "08-gas-electrones", "numero": "8", "titulo": "Gas de electrones", "cohen": "Complemento C_XIV · pp. 1481–1495", "listo": true },
+  { "id": "E1-tres-niveles", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E1", "titulo": "Tres partículas en tres niveles", "cohen": "Cohen, complemento D del cap. XIV · p. 1496", "listo": true },
+  { "id": "E2-terminos", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E2", "titulo": "Términos espectrales de dos bosones de espín 1", "cohen": "Cohen, complemento D del cap. XIV · p. 1496", "listo": true },
+  { "id": "E3-orbitales", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E3", "titulo": "Dos electrones en orbitales p", "cohen": "Cohen, complemento D del cap. XIV · p. 1496", "listo": true },
+  { "id": "E4-colision", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E4", "titulo": "Colisión de dos partículas idénticas", "cohen": "Cohen, complemento D del cap. XIV · p. 1497", "listo": true },
+  { "id": "E5-no-polarizadas", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E5", "titulo": "Colisión de partículas no polarizadas", "cohen": "Cohen, complemento D del cap. XIV · p. 1497", "listo": true },
+  { "id": "E6-momento-relativo", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E6", "titulo": "Momento angular relativo permitido", "cohen": "Cohen, complemento D del cap. XIV · pp. 1497–1499", "listo": true },
+  { "id": "E7-densidades", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E7", "titulo": "Densidades de una y dos partículas", "cohen": "Cohen, complemento D del cap. XIV · pp. 1499–1500", "listo": true },
+  { "id": "E8-simetrizar-estado", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E8", "titulo": "Basta con simetrizar el estado", "cohen": "Cohen, complemento D del cap. XIV · pp. 1500–1502", "listo": true },
+  { "id": "E9-hueco-intercambio", "tipo": "ejercicio", "carpeta": "ejercicios", "numero": "E9", "titulo": "El hueco de intercambio en un gas de electrones", "cohen": "Cohen, complemento D del cap. XIV · pp. 1502–1504", "listo": true }
 ]

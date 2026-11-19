@@ -54,6 +54,17 @@
 .lista-secciones .pronto { opacity: 0.55; cursor: default; }
 .lista-secciones .pronto small { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .lista-num { font-family: var(--f-titulo); }
+.lista-grupo {
+  margin: 14px 0 4px;
+  padding: 10px 10px 0;
+  border-top: 1px solid var(--borde);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tenue);
+}
+.lista-grupo sub { font-size: 0.85em; letter-spacing: 0.04em; text-transform: none; }
 
 .toc { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--borde); }
 .toc a {

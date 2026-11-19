@@ -105,13 +105,13 @@ El material ya está preparado en `material/` con `herramientas/extraer_cohen.py
 | 3 | Postulado de simetrización: kets físicos, determinante de Slater, medida y evolución | §C | 1434–1443 | `slater`: eliges los orbitales y el determinante se anula si repites uno |
 | 4 | Bosones, fermiones y Pauli: estado fundamental, estadísticas cuánticas | §D-1 | 1444–1446 | `llenado-niveles` · `conteo-microestados` (MB, BE y FD contando microestados, como en el Cohen) |
 | 5 | Interferencia entre el proceso directo y el de intercambio; cuándo se puede ignorar la simetrización | §D-2 | 1446–1455 | `densidad-dos-particulas` · `colision-identicas` |
-| 6 ⏸ | Átomos de muchos electrones: campo central y configuraciones | Compl. A_XIV | 1459–1466 | `configuraciones`: la tabla periódica que se va llenando |
-| 7 ⏸ | Átomo de helio: energía de intercambio, términos espectrales y multipletes | Compl. B_XIV | 1467–1480 | `helio-intercambio`: integrales J y K, singlete y triplete |
-| 8 ⏸ | Gas de electrones: energía de Fermi y electrones en sólidos | Compl. C_XIV | 1481–1495 | `gas-fermi` |
+| 6 | Átomos de muchos electrones: campo central y configuraciones | Compl. A_XIV | 1459–1466 | `configuraciones` ✅: la tabla periódica que se va llenando |
+| 7 | Átomo de helio: energía de intercambio, términos espectrales y multipletes | Compl. B_XIV | 1467–1480 | `helio-intercambio` ✅: integrales K (directa) y J (intercambio), singlete y triplete |
+| 8 | Gas de electrones: energía de Fermi y electrones en sólidos | Compl. C_XIV | 1481–1495 | `gas-fermi` ✅ |
 | E | **Ejercicios** (una página cada uno) | Compl. D_XIV | 1496–1504 | uno por ejercicio (tabla de abajo) |
 | — | Glosario · Referencias · Créditos · Imprimir | — | — | — |
 
-> ⏸ **Complementos A, B y C en pausa** (decisión del 2026-11-18) hasta que el profesor confirme si entran en el parcial. No se escriben sus secciones mientras tanto.
+> Los complementos A, B y C estuvieron en pausa (2026-11-18) a la espera del profesor. **El 2026-11-19 David pidió hacerlos completos**, junto con los ejercicios 2 y 9: ya están escritos (secciones 6 a 8).
 
 **Orden de prioridad** (acordado el 2026-11-18):
 1. **Imprescindible:** el cuerpo del capítulo, §A–§D (pp. 1419–1455) → secciones 1 a 5.
@@ -121,19 +121,19 @@ El material ya está preparado en `material/` con `herramientas/extraer_cohen.py
 
 El rango de trabajo sigue siendo pp. 1419–1504: cortar en la p. 1450 dejaría a medias el §D-2-a (pp. 1446–1452), que usan los ejercicios 4, 5 y 7, y fuera el §D-2-b. Leer más páginas no sube el costo, porque de cada sección se lee sólo lo necesario con el mapa.
 
-**Ejercicios del D_XIV.** *Supuesto: son los ejercicios del parcial, porque el único material es el Cohen.*
+**Ejercicios del D_XIV.** *Supuesto: son los ejercicios del parcial, porque el único material es el Cohen.* Las simulaciones de los ejercicios 4, 5 y 6 usan un modelo propio (esfera dura) para tener números; resumen de los enunciados en `material/notas/D-XIV-ejercicios.md`.
 
 | Ej. | Tema | Simulación propuesta |
 |---|---|---|
-| 1 | Partículas en tres niveles equidistantes (0, ħω₀, 2ħω₀): niveles del sistema y sus degeneraciones según el tipo de partícula y el espín | `ej1-tres-niveles` |
-| 2 | Términos espectrales de dos bosones de espín 1 en las configuraciones 1s², 1s2s y 2p² | `ej2-terminos` |
-| 3 | Dos electrones con espín + en orbitales p orientados: estado antisimétrico y densidad angular | `ej3-orbitales` |
-| 4 | Colisión entre dos partículas idénticas | `ej4-colision` |
-| 5 | Colisión de partículas idénticas no polarizadas de espín s | `ej5-no-polarizadas` |
-| 6 | Valores posibles del momento angular relativo de dos partículas idénticas | `ej6-momento-relativo` |
-| 7 | Densidades de probabilidad de posición de dos partículas idénticas | `ej7-densidades` |
-| 8 | Basta con simetrizar el vector de estado: no hace falta simetrizar los kets de la medida | demostración con verificación numérica |
-| 9 | Funciones de densidad de una y dos partículas en un gas de electrones a T = 0 (el hueco de intercambio) | `ej9-hueco-intercambio` |
+| 1 | Partículas en tres niveles equidistantes (0, ħω₀, 2ħω₀): niveles del sistema y sus degeneraciones según el tipo de partícula y el espín | `ej1-tres-niveles` ✅ |
+| 2 | Términos espectrales de dos bosones de espín 1 en las configuraciones 1s², 1s2s y 2p² | `ej2-terminos` ✅ |
+| 3 | Dos electrones con espín + en orbitales p orientados: estado antisimétrico y densidad angular | `ej3-orbitales` ✅ |
+| 4 | Colisión entre dos partículas idénticas | `ej4-colision` ✅ |
+| 5 | Colisión de partículas idénticas no polarizadas de espín s | `ej5-no-polarizadas` ✅ |
+| 6 | Valores posibles del momento angular relativo de dos partículas idénticas | `ej6-momento-relativo` ✅ |
+| 7 | Densidades de probabilidad de posición de dos partículas idénticas | `ej7-densidades` ✅ |
+| 8 | Basta con simetrizar el vector de estado: no hace falta simetrizar los kets de la medida | demostración con verificación numérica: `ej8-simetrizar-estado` ✅ |
+| 9 | Funciones de densidad de una y dos partículas en un gas de electrones a T = 0 (el hueco de intercambio) | `ej9-hueco-intercambio` ✅ |
 
 *Extra opcional* (no está en el Cohen, pero sí en el microcurrículo): un recuadro «Conexión nuclear» sobre los nucleones como fermiones y el principio de Pauli en el modelo de capas nuclear.
 
@@ -170,7 +170,7 @@ Sale con Cmd/Ctrl+P o con «Guardar como PDF». El prototipo ya trae una hoja de
 | **F0 Arranque** | Repo, esqueleto, sistema de diseño, portada prototipo, `CLAUDE.md`, plantillas | ✅ hecho |
 | **F1 Material** | ✅ Cohen ubicado y extraído (`material/`), mapa de secciones, ejercicios identificados (D_XIV, 9). Falta: notas en Markdown con ecuaciones, sección por sección (se hacen justo antes de escribir cada sección) | David + Claude |
 | **F2 Motor** | ✅ Núcleo de MC I portado, `CONTRATO.md`, cargador md → página (`js/sitio/seccion.js`), `seccion.html`, índice con scroll-spy y cajón en el celular, paso a paso, esqueleto, preguntas, pruebas con Node, servidor sin caché, SRI. Falta: glosario emergente | David + Claude |
-| **F3 Contenido** | Secciones, ejercicios y simulaciones, con pruebas numéricas. ✅ Sección 1 (§A, 2 simulaciones) · ✅ Sección 2 (§B, 1 simulación) · ✅ Sección 3 (§C, simulación `slater`) · ✅ Sección 4 (§D-1, 2 simulaciones) · ✅ Sección 5 (§D-2, 2 simulaciones): **cuerpo del capítulo completo** · 57/57 pruebas | David + Claude |
+| **F3 Contenido** | Secciones, ejercicios y simulaciones, con pruebas numéricas. ✅ Sección 1 (§A, 2 simulaciones) · ✅ Sección 2 (§B, 1 simulación) · ✅ Sección 3 (§C, simulación `slater`) · ✅ Sección 4 (§D-1, 2 simulaciones) · ✅ Sección 5 (§D-2, 2 simulaciones): **cuerpo del capítulo completo** · ✅ Sección 6 (Compl. A, `configuraciones`) · ✅ Sección 7 (Compl. B, `helio-intercambio`) · ✅ Sección 8 (Compl. C, `gas-fermi`) · ✅ **Los 9 ejercicios del D_XIV** (`contenido/ejercicios/`, 9 simulaciones `ej*`; navegación con `seccion.html?s=EN-…`) · 136/136 pruebas | David + Claude |
 | **F4 Pulido** | `imprimir.html`, accesibilidad, móvil, rendimiento, revisión final de la física, video de introducción (opcional) | David + Claude |
 | **F5 Entrega** | Lista de verificación (§9), ensayo de impresión, enlace final | David + Claude |
 
@@ -188,7 +188,7 @@ Sale con Cmd/Ctrl+P o con «Guardar como PDF». El prototipo ya trae una hoja de
 ## 10. Pendiente de ustedes
 
 - [x] **Material**: sólo el Cohen II, cap. XIV (pp. 1419–1504).
-- [ ] **Preguntar al profesor** si entran los complementos A, B y C del XIV o sólo el capítulo y los ejercicios (en particular los ejercicios 2 y 9, que dependen de B §2-b y C §1). Mientras tanto, los complementos están en pausa (§5).
+- [x] ~~Preguntar al profesor si entran los complementos A, B y C~~: David decidió hacerlos (2026-11-19); ya están escritos.
 - [ ] Fecha de entrega.
 - [x] Repositorio: https://github.com/DLUG22/particulas-indistinguibles (público) · página: https://dlug22.github.io/particulas-indistinguibles/ (GitHub Pages desde `main`, 2026-11-18).
 - [ ] Logo oficial UT en SVG o PNG (David lo envía; va en `assets/img/`).

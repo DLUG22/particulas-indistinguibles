@@ -6,7 +6,7 @@ Incluye la teoría completa, simulaciones interactivas, el paso a paso de los ej
 
 ## Ver la página
 
-- **En línea:** *(enlace de GitHub Pages cuando se publique)*
+- **En línea:** <https://dlug22.github.io/particulas-indistinguibles/>
 - **En tu computador:** desde la carpeta del repositorio,
 
   ```bash

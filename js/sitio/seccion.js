@@ -2,6 +2,8 @@
    seccion.js — Arma una página de sección a partir de contenido/<id>.md
    -----------------------------------------------------------------------------
    seccion.html?s=01-problema  →  lee contenido/indice.json y contenido/01-problema.md
+   seccion.html?s=E1-tres-niveles → si la entrada del índice trae «carpeta»
+   (p. ej. "ejercicios"), lee contenido/ejercicios/E1-tres-niveles.md
 
    Formato del Markdown (además del Markdown normal y de $…$ / $$…$$ con KaTeX):
      ---                          Cabecera: titulo, numero, cohen, resumen
@@ -27,7 +29,8 @@
   if (!articulo) return;
 
   var cada = function (sel, fn, base) { Array.prototype.forEach.call((base || document).querySelectorAll(sel), fn); };
-  var ID_VALIDO = /^[a-z0-9][a-z0-9-]{0,60}$/;
+  var ID_VALIDO = /^[A-Za-z0-9][A-Za-z0-9-]{0,60}$/;
+  var CARPETA_VALIDA = /^[a-z]{1,30}$/;
 
   var MACROS = {
     '\\ket': '\\left|#1\\right\\rangle',
@@ -250,7 +253,15 @@
     var lista = document.getElementById('lista-secciones');
     if (!lista) return;
     lista.textContent = '';
+    var grupoPuesto = false;
     indice.forEach(function (s) {
+      if (s.tipo === 'ejercicio' && !grupoPuesto) {
+        grupoPuesto = true;
+        var g = document.createElement('li');
+        g.className = 'lista-grupo';
+        g.innerHTML = 'Ejercicios · complemento D<sub>XIV</sub>';
+        lista.appendChild(g);
+      }
       var li = document.createElement('li');
       var num = '<span class="lista-num">' + escapar(s.numero) + '</span>';
       if (s.listo) {
@@ -288,8 +299,14 @@
         (s && !s.listo ? '<em>pronto</em>' : '');
       return el;
     }
-    var ant = pos > 0 ? indice[pos - 1] : null;
-    var sig = pos < indice.length - 1 ? indice[pos + 1] : null;
+    // Vecino listo más cercano (se saltan las entradas «pronto»); si no hay, el inmediato.
+    function vecino(paso) {
+      for (var k = pos + paso; k >= 0 && k < indice.length; k += paso) if (indice[k].listo) return indice[k];
+      var j = pos + paso;
+      return j >= 0 && j < indice.length ? indice[j] : null;
+    }
+    var ant = vecino(-1);
+    var sig = vecino(1);
     if (ant) pie.appendChild(tarjeta(ant, '← Anterior', 'pie-ant'));
     else {
       var inicio = document.createElement('a');
@@ -308,7 +325,8 @@
     var meta = document.getElementById('seccion-meta');
     var t = datos.titulo || s.titulo;
     document.title = t + ' · Partículas indistinguibles';
-    if (ceja) ceja.textContent = 'Sección ' + (datos.numero || s.numero) + ' · ' + (datos.cohen || s.cohen || '');
+    var rotulo = s.tipo === 'ejercicio' ? 'Ejercicio ' : 'Sección ';
+    if (ceja) ceja.textContent = rotulo + (datos.numero || s.numero) + ' · ' + (datos.cohen || s.cohen || '');
     if (titulo) { titulo.textContent = t; titulo.setAttribute('data-split', ''); }
     if (resumen) resumen.textContent = datos.resumen || '';
     if (meta) {
@@ -412,7 +430,8 @@
       if (!s || !ID_VALIDO.test(s.id)) throw new Error('No hay secciones disponibles.');
       construirListaSecciones(indice, s.id);
       construirPie(indice, indice.indexOf(s));
-      return traer('contenido/' + s.id + '.md').then(function (r) { return r.text(); }).then(function (texto) {
+      if (s.carpeta && !CARPETA_VALIDA.test(s.carpeta)) throw new Error('Carpeta no válida en el índice.');
+      return traer('contenido/' + (s.carpeta ? s.carpeta + '/' : '') + s.id + '.md').then(function (r) { return r.text(); }).then(function (texto) {
         var partes = separarCabecera(texto);
         var md = crearMd();
         articulo.innerHTML = renderizar(md, partes.cuerpo);

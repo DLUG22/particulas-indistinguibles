@@ -611,6 +611,32 @@ main:focus { outline: none; }
   background: var(--c, var(--acento));
 }
 
+.mapa-ejercicios {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 6px 14px;
+  font-size: 0.86rem;
+}
+.mapa-ejercicios a,
+.mapa-ejercicios .en-pausa {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: var(--tinta);
+  text-decoration: none;
+  transition: background-color var(--dur-corta) ease;
+}
+.mapa-ejercicios a:hover { background: var(--acento-suave); }
+.mapa-ejercicios b { font-family: var(--f-titulo); color: var(--acento); min-width: 1.1em; }
+.mapa-ejercicios .en-pausa { color: var(--tenue); }
+.mapa-ejercicios .en-pausa b { color: var(--tenue); }
+.mapa-ejercicios small { margin-left: auto; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
 @media (max-width: 560px) {
   .mapa { --tam: 44px; }
   .mapa-num { font-size: 0.95rem; }

@@ -16,5 +16,21 @@ window.LISTA_SIMS = [
   'conteo-microestados',
   // Sección 5 · Cohen §D-2
   'densidad-dos-particulas',
-  'colision-identicas'
+  'colision-identicas',
+  // Sección 6 · Complemento A_XIV
+  'configuraciones',
+  // Sección 7 · Complemento B_XIV
+  'helio-intercambio',
+  // Sección 8 · Complemento C_XIV
+  'gas-fermi',
+  // Ejercicios · complemento D_XIV
+  'ej1-tres-niveles',
+  'ej2-terminos',
+  'ej3-orbitales',
+  'ej4-colision',
+  'ej5-no-polarizadas',
+  'ej6-momento-relativo',
+  'ej7-densidades',
+  'ej8-simetrizar-estado',
+  'ej9-hueco-intercambio'
 ];
