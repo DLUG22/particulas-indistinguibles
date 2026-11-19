@@ -190,6 +190,6 @@ Sale con Cmd/Ctrl+P o con «Guardar como PDF». El prototipo ya trae una hoja de
 - [x] **Material**: sólo el Cohen II, cap. XIV (pp. 1419–1504).
 - [ ] **Preguntar al profesor** si entran los complementos A, B y C del XIV o sólo el capítulo y los ejercicios (en particular los ejercicios 2 y 9, que dependen de B §2-b y C §1). Mientras tanto, los complementos están en pausa (§5).
 - [ ] Fecha de entrega.
-- [ ] Usuario de GitHub y nombre del repositorio.
+- [x] Repositorio: https://github.com/DLUG22/particulas-indistinguibles (público) · página: https://dlug22.github.io/particulas-indistinguibles/ (GitHub Pages desde `main`, 2026-11-18).
 - [ ] Logo oficial UT en SVG o PNG (David lo envía; va en `assets/img/`).
 - [ ] Nombres para los créditos.
