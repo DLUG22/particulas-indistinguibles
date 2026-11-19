@@ -15,7 +15,10 @@ El plan completo está en `PLAN.md` (léelo si la tarea es grande o no sabes por
 
 ## Arquitectura (no cambiar sin acordarlo)
 - Sitio estático **sin compilación**: HTML + CSS + JS **clásico** (nada de `type="module"`, nada de npm ni bundlers). GitHub Pages sirve la raíz del repo.
-- Bibliotecas sólo por CDN con **versión exacta** (KaTeX 0.16.25, markdown-it 14.1.0, markdown-it-texmath 1.0.0, Lenis 1.1.13). Si una no carga, la página debe seguir funcionando.
+- Bibliotecas sólo por jsDelivr con **versión exacta y huella SRI** (`integrity` + `crossorigin="anonymous"`): KaTeX 0.16.25, markdown-it 14.1.0, markdown-it-texmath 1.0.0, Lenis 1.1.13. Si una no carga, la página debe seguir funcionando.
+- **Fuentes propias** en `assets/fuentes/` (Fraunces e Inter de `@fontsource-variable`, OFL) con `css/fuentes.css`. Nada de Google Fonts: su CSS no admite SRI.
+- **CSP** (`<meta http-equiv="Content-Security-Policy">`) en `index.html` y `seccion.html`. Sólo permite scripts del propio sitio y de las rutas exactas de jsDelivr, nada de scripts en línea ni de `on*=` ni de `eval`, y `fetch` sólo al propio sitio. Si agregas una biblioteca, una página o un recurso externo, ponlo en la CSP de **cada** página. El código de arranque va en `js/sitio/arranque.js`, no dentro del HTML.
+- El parámetro `?s=` sólo se compara con los `id` de `contenido/indice.json`, y nada de la URL se escribe en el HTML. Si algo va a `innerHTML`, pásalo por `escapar()`.
 - El contenido vive en `contenido/*.md` (fuente única). Si el HTML contradice al `.md`, manda el `.md`.
 - Simulaciones: un archivo por simulación en `js/sims/<id>.js`, con la interfaz del motor de MC I (`registrarSim`, `Graf`, `UI`, `Num`). **`CONTRATO.md` manda.** Cada simulación nueva se agrega a `js/sims/lista.js`.
 - `localStorage` siempre dentro de `try/catch`.

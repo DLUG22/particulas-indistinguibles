@@ -45,7 +45,11 @@ Página web para desarrollar el parcial de *partículas indistinguibles*: teorí
 - **Sitio estático, sin compilación**: HTML, CSS y JS clásico (sin módulos ES). GitHub Pages lo publica tal cual y gratis. No hay que instalar nada para trabajar en ella.
 - **El contenido se escribe en Markdown**: `contenido/NN-*.md`, un archivo por sección y otro por ejercicio. Cada simulación se declara dentro del `.md` con un bloque ` ```sim ` en YAML (id, controles, pruebas), igual que en MC I.
 - **Motor de simulaciones**: se porta de MC I a `js/nucleo/` sin cambiar su interfaz, y se documenta en `CONTRATO.md`.
-- **Bibliotecas por CDN con versión fija**: KaTeX 0.16.25, markdown-it 14.1.0, markdown-it-texmath 1.0.0 y Lenis 1.1.13 (scroll suave, opcional). Si falta una, la página sigue funcionando.
+- **Bibliotecas por CDN con versión fija y SRI**: KaTeX 0.16.25, markdown-it 14.1.0, markdown-it-texmath 1.0.0 y Lenis 1.1.13 (scroll suave, opcional). Si falta una, la página sigue funcionando.
+- **Seguridad** (2026-11-19):
+  - Las fuentes se sirven desde el sitio (`assets/fuentes/`), sin Google Fonts.
+  - Cada página trae una CSP que sólo deja correr scripts propios y los de esas versiones de jsDelivr.
+  - `?s=` sólo acepta los `id` de `contenido/indice.json`.
 
 ```
 /                        ← raíz del repo = raíz de GitHub Pages
@@ -53,11 +57,12 @@ Página web para desarrollar el parcial de *partículas indistinguibles*: teorí
 ├── seccion.html         plantilla de lectura (fase 2)
 ├── imprimir.html        versión imprimible (fase 4)
 ├── contenido/           ★ teoría y ejercicios en Markdown (fuente única)
-├── css/                 tokens · sitio · movimiento · impresion
+├── css/                 fuentes · tokens · sitio · movimiento · impresion
 ├── js/sitio/            tema, movimiento, portada, navegación, cargador de contenido
 ├── js/nucleo/           motor portado de MC I (constantes, numerico, graficos, ui, registro, pruebas)
 ├── js/sims/             una simulación por archivo: <id>.js
 ├── assets/img/          logo UT, figuras
+├── assets/fuentes/      Fraunces e Inter (woff2 variables, licencia OFL)
 ├── herramientas/        extraer_cohen.py (prepara material/), pruebas sin navegador, empaquetado
 ├── material/            ⚠ NO se publica (.gitignore): PDFs, enunciados, notas
 └── docs/prompts/        plantillas de prompts compartidas
@@ -161,7 +166,7 @@ Sale con Cmd/Ctrl+P o con «Guardar como PDF». El prototipo ya trae una hoja de
   - El material se procesa **una sola vez**: se pasa de PDF a notas Markdown en `material/notas/`, y desde ahí Claude lee texto.
   - El diseño y la arquitectura se hacen una vez, con el modelo más capaz. La redacción y las simulaciones rutinarias pueden ir con uno más económico.
   - Una sesión corta por tarea (una sección o una simulación).
-  - Las bibliotecas pesadas (KaTeX, markdown-it, Lenis) se cargan por CDN con versión exacta y huella **SRI**: el navegador las rechaza si alguien las altera.
+  - Las bibliotecas pesadas (KaTeX, markdown-it, Lenis) se cargan por CDN con versión exacta y huella **SRI**: el navegador las rechaza si alguien las altera. Las huellas se comprobaron contra el paquete oficial de npm.
 
 ## 8. Fases
 

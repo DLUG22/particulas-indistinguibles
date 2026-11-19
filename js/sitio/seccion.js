@@ -446,7 +446,9 @@
         if (window.Movimiento) window.Movimiento.preparar(document);
         seguirLectura(titulos);
         if (location.hash) {
-          var destino = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+          // Un «#…» mal codificado (p. ej. «#%E0») hace fallar decodeURIComponent: se ignora.
+          var destino = null;
+          try { destino = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) { destino = null; }
           if (destino) setTimeout(function () { destino.scrollIntoView(); }, 60);
         }
         return montarSims();
